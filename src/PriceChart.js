@@ -74,8 +74,10 @@ const FinancialChart = ({
   priceDisplayFormat,
   ratio,
   width,
+  initialData,
+  loaded,
 }) => {
-  const { data: initialData, loaded } = useMarketData();
+  console.log(">>>>>", initialData, loaded);
   const [resetCount, setResetCount] = useState(0);
 
   if (!loaded || !height || !ratio || !width) return null;
@@ -87,6 +89,7 @@ const FinancialChart = ({
     );
   const { data, xScale, xAccessor, displayXAccessor } =
     xScaleProvider(initialData);
+  console.log(">>data>>>", data);
 
   const min = xAccessor(data[Math.max(0, data.length - parseInt(width / 5))]);
   const max = xAccessor(data[data.length - 1]);
@@ -175,6 +178,8 @@ FinancialChart.propTypes = {
   priceDisplayFormat: PropTypes.func,
   ratio: PropTypes.number,
   width: PropTypes.number,
+  from: PropTypes.string,
+  to: PropTypes.string,
 };
 
 FinancialChart.defaultProps = {
