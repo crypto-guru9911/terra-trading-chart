@@ -185,7 +185,7 @@ FinancialChart.propTypes = {
 FinancialChart.defaultProps = {
   dateTimeFormat: "%d %b '%y \xa0 %H:%M",
   height: 0,
-  margin: { left: 0, right: 48, top: 0, bottom: 24 },
+  margin: { left: 150, right: 48, top: 0, bottom: 24 },
   priceDisplayFormat: format(".2f"),
   ratio: 0,
   width: 0,

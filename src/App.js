@@ -4,6 +4,7 @@ import "./styles.css";
 
 function App() {
   const [initialData, setInitialData] = useState([]);
+  const [period, setPeriod] = useState("1h");
   const today = new Date();
   const yesterday = new Date(today.getTime());
   yesterday.setDate(today.getDate() - 1);
@@ -21,13 +22,13 @@ function App() {
         new Date(from_time).getTime() / 1000
       }&to=${
         new Date(to_time).getTime() / 1000
-      }&interval=1h&pairAddress=terra106a00unep7pvwvcck4wylt4fffjhgkf9a0u6eu&quoteAsset=uusd`
+      }&interval=${period}&pairAddress=terra106a00unep7pvwvcck4wylt4fffjhgkf9a0u6eu&quoteAsset=uusd`
     )
       .then((response) => response.json())
       .then((data) => {
         setInitialData(data);
       });
-  }, [from_time, to_time]);
+  }, [from_time, to_time, period]);
 
   function getISOStringWithoutSecsAndMillisecs(date) {
     const dateAndTime = date.toISOString().split("T");
@@ -59,6 +60,62 @@ function App() {
           value={to_time}
           onChange={(e) => setToTime(e.target.value)}
         />
+      </div>
+      <div style={{ position: "absolute", top: 0, left: 0, zIndex: 10 }}>
+        <div
+          className={`period_button ${period == "1m" ? "active" : ""}`}
+          onClick={() => setPeriod("1m")}
+        >
+          1 minute
+        </div>
+        <div
+          className={`period_button ${period == "3m" ? "active" : ""}`}
+          onClick={() => setPeriod("3m")}
+        >
+          3 minutes
+        </div>
+        <div
+          className={`period_button ${period == "5m" ? "active" : ""}`}
+          onClick={() => setPeriod("5m")}
+        >
+          5 minutes
+        </div>
+        <div
+          className={`period_button ${period == "15m" ? "active" : ""}`}
+          onClick={() => setPeriod("15m")}
+        >
+          15 minutes
+        </div>
+        <div
+          className={`period_button ${period == "30m" ? "active" : ""}`}
+          onClick={() => setPeriod("30m")}
+        >
+          30 minutes
+        </div>
+        <div
+          className={`period_button ${period == "1h" ? "active" : ""}`}
+          onClick={() => setPeriod("1h")}
+        >
+          1 hour
+        </div>
+        <div
+          className={`period_button ${period == "4h" ? "active" : ""}`}
+          onClick={() => setPeriod("4h")}
+        >
+          4 hours
+        </div>
+        <div
+          className={`period_button ${period == "12h" ? "active" : ""}`}
+          onClick={() => setPeriod("12h")}
+        >
+          12 hours
+        </div>
+        <div
+          className={`period_button ${period == "1d" ? "active" : ""}`}
+          onClick={() => setPeriod("1d")}
+        >
+          1 day
+        </div>
       </div>
     </div>
   );

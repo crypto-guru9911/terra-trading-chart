@@ -14,3 +14,19 @@ body {
 .react-no-select {
   user-select: none;
 }
+
+.period_button {
+  color: white;
+  width: 120px;
+  padding: 15px;
+}
+
+.period_button:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.active {
+  cursor: pointer;
+  background-color: lightslategray;
+}
