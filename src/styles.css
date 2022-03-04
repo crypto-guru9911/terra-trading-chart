@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.react-financial-charts-ew-resize-cursor {
+  cursor: pointer;
+}
+
+.react-no-select {
+  user-select: none;
+}
