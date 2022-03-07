@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "axios": "^0.26.0",
     "d3-dsv": "3.0.1",
     "d3-format": "3.0.1",
     "d3-time": "3.0.0",

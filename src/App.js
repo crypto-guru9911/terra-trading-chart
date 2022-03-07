@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { PriceChart } from "./PriceChart";
 import "./styles.css";
 
@@ -16,17 +17,21 @@ function App() {
   );
 
   useEffect(() => {
-    console.log("sdfsdf");
-    fetch(
-      `https://api.coinhall.org/api/v1/charts/terra/candles?from=${
-        new Date(from_time).getTime() / 1000
-      }&to=${
-        new Date(to_time).getTime() / 1000
-      }&interval=${period}&pairAddress=terra106a00unep7pvwvcck4wylt4fffjhgkf9a0u6eu&quoteAsset=uusd`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setInitialData(data);
+    // fetch(
+    //   `https://api.coinhall.org/api/v1/charts/terra/candles?from=${
+    //     new Date(from_time).getTime() / 1000
+    //   }&to=${
+    //     new Date(to_time).getTime() / 1000
+    //   }&interval=${period}&pairAddress=terra106a00unep7pvwvcck4wylt4fffjhgkf9a0u6eu&quoteAsset=uusd`
+    // )
+    axios
+      .post("https://terra-trading-chart-api.herokuapp.com/api/chartdata", {
+        from_time: new Date(from_time).getTime() / 1000,
+        to_time: new Date(to_time).getTime() / 1000,
+        period,
+      })
+      .then((response) => {
+        setInitialData(response.data);
       });
   }, [from_time, to_time, period]);
 

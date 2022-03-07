@@ -77,7 +77,6 @@ const FinancialChart = ({
   initialData,
   loaded,
 }) => {
-  console.log(">>>>>", initialData, loaded);
   const [resetCount, setResetCount] = useState(0);
 
   if (!loaded || !height || !ratio || !width) return null;
@@ -89,7 +88,6 @@ const FinancialChart = ({
     );
   const { data, xScale, xAccessor, displayXAccessor } =
     xScaleProvider(initialData);
-  console.log(">>data>>>", data);
 
   const min = xAccessor(data[Math.max(0, data.length - parseInt(width / 5))]);
   const max = xAccessor(data[data.length - 1]);
